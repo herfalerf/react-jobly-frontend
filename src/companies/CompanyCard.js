@@ -1,20 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Card, CardBody, CardTitle, CardText } from "reactstrap";
+import "./CompanyCard.css";
 
-const CompanyCard = ({ company }) => {
+const CompanyCard = ({ handle, name, description }) => {
   return (
-    <Link to={`/companies/${company.handle}`} className="add-link">
-      <section className="col-md-4">
-        <Card>
-          <CardBody>
-            <CardTitle className="font-weight-bold text-center">
-              {company.name}
-            </CardTitle>
-            <CardText>{company.description}</CardText>
-          </CardBody>
-        </Card>
-      </section>
+    <Link to={`/companies/${handle}`} className="CompanyCard card">
+      <div className="card-body">
+        <h6 className="card-title">{name}</h6>
+        <p>
+          <small>{description}</small>
+        </p>
+      </div>
     </Link>
   );
 };

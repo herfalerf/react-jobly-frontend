@@ -1,9 +1,18 @@
 import React from "react";
+import "./JobCard.css";
 
-const JobCard = () => {
+const JobCard = ({ id, salary, equity, title, companyName }) => {
   return (
-    <div>
-      <h3>JobCard</h3>
+    <div className="JobCard card">
+      <div className="card-body">
+        <h6 className="card-title">{title}</h6>
+        <p>
+          <small>Salary: {salary}</small>
+        </p>
+        <p>
+          <small>Equity: {equity}</small>
+        </p>
+      </div>
     </div>
   );
 };

@@ -1,11 +1,19 @@
 import React from "react";
 import JobCard from "./JobCard";
 
-const JobCardList = () => {
+const JobCardList = ({ jobs }) => {
   return (
-    <div>
-      <h2>Job Card List</h2>
-      <JobCard />
+    <div className="JobCardList">
+      {jobs.map((job) => (
+        <JobCard
+          key={job.id}
+          id={job.id}
+          title={job.title}
+          salary={job.salary}
+          equity={job.equity}
+          companyName={job.companyName}
+        />
+      ))}
     </div>
   );
 };

@@ -25,10 +25,10 @@ const CompanyDetail = () => {
   console.debug(company);
 
   return (
-    <div>
+    <div className="CompanyDetail col-md-8 offset-md-2">
       <h3>{company.name}</h3>
       <p>{company.description}</p>
-      <JobCardList />
+      <JobCardList jobs={company.jobs} />
     </div>
   );
 };
