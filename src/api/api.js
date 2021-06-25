@@ -33,6 +33,12 @@ class JoblyApi {
   }
 
   // Individual API routes
+  // Get the current user
+
+  static async getCurrentUser(username) {
+    let res = await this.request(`users/${username}`);
+    return res.user;
+  }
 
   // Get list of companies
 
@@ -50,8 +56,8 @@ class JoblyApi {
 
   // Get list of jobs
 
-  static async getJobs() {
-    let res = await this.request(`jobs`);
+  static async getJobs(title) {
+    let res = await this.request(`jobs`, { title });
     return res.jobs;
   }
 
@@ -74,15 +80,22 @@ class JoblyApi {
   // Get Token (login function)
 
   static async login(data) {
-    let res = await this.request(`token`, data, "post");
+    let res = await this.request(`auth/token`, data, "post");
     return res.token;
   }
 
   // Register user (signup function)
 
   static async signup(data) {
-    let res = await this.request(`register`, data, "post");
+    let res = await this.request(`auth/register`, data, "post");
     return res.token;
+  }
+
+  // Save user profile page
+
+  static async saveProfile(username, data) {
+    let res = await this.request(`users/${username}`, data, "patch");
+    return res.user;
   }
 }
 

@@ -1,17 +1,25 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const ProfileForm = () => {
+const LoginForm = ({ login }) => {
   const INITIAL_STATE = {
     username: "",
-    firstname: "",
-    lastname: "",
-    email: "",
     password: "",
   };
 
   const history = useHistory();
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const [formErrors, setFormErrors] = useState([]);
+
+  console.debug(
+    "LoginForm",
+    "login=",
+    typeof login,
+    "formData=",
+    formData,
+    "formErrors",
+    formErrors
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,16 +29,19 @@ const ProfileForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    //ADD LOGIN FUNCTION HERE
-    setFormData(INITIAL_STATE);
-    history.push("/profile");
-  };
+    let result = await login(formData);
+    if (result.success) {
+      history.push("/companies");
+    } else {
+      setFormErrors(result.errors);
+    }
+  }
 
   return (
     <div>
-      <h1>Profile</h1>
+      <h1>Log In</h1>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username</label>
         <input
@@ -38,30 +49,6 @@ const ProfileForm = () => {
           type="text"
           name="username"
           value={formData.username}
-          onChange={handleChange}
-        />
-        <label htmlFor="firstname">First Name</label>
-        <input
-          id="firstname"
-          type="text"
-          name="firstname"
-          value={formData.firstname}
-          onChange={handleChange}
-        />
-        <label htmlFor="lastname">Last name</label>
-        <input
-          id="lastname"
-          type="text"
-          name="lastname"
-          value={formData.lastname}
-          onChange={handleChange}
-        />
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          type="email"
-          name="email"
-          value={formData.email}
           onChange={handleChange}
         />
         <label htmlFor="password">Password</label>
@@ -78,4 +65,4 @@ const ProfileForm = () => {
   );
 };
 
-export default ProfileForm;
+export default LoginForm;

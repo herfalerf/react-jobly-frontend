@@ -1,17 +1,28 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
-const SignupForm = () => {
+const SignupForm = ({ signup }) => {
   const INITIAL_STATE = {
     username: "",
     password: "",
-    firstname: "",
-    lastname: "",
+    firstName: "",
+    lastName: "",
     email: "",
   };
 
   const history = useHistory();
   const [formData, setFormData] = useState(INITIAL_STATE);
+  const [formErrors, setFormErrors] = useState([]);
+
+  console.debug(
+    "SignupForm",
+    "signup=",
+    typeof signup,
+    "formData=",
+    formData,
+    "formErrors=",
+    formErrors
+  );
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,12 +32,15 @@ const SignupForm = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  async function handleSubmit(e) {
     e.preventDefault();
-    //ADD SIGNUP FUNCTION HERE
-    setFormData(INITIAL_STATE);
-    history.push("/signup");
-  };
+    let result = await signup(formData);
+    if (result.success) {
+      history.push("/companies");
+    } else {
+      setFormErrors(result.errors);
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit}>
@@ -46,20 +60,20 @@ const SignupForm = () => {
         value={formData.password}
         onChange={handleChange}
       />
-      <label htmlFor="firstname">First name</label>
+      <label htmlFor="firstName">First name</label>
       <input
-        id="firstname"
+        id="firstName"
         type="text"
-        name="firstname"
-        value={formData.firstname}
+        name="firstName"
+        value={formData.firstName}
         onChange={handleChange}
       />
-      <label htmlFor="lastname">Last name</label>
+      <label htmlFor="lastName">Last name</label>
       <input
-        id="lastname"
+        id="lastName"
         type="text"
-        name="lastname"
-        value={formData.lastname}
+        name="lastName"
+        value={formData.lastName}
         onChange={handleChange}
       />
       <label htmlFor="email">Email</label>

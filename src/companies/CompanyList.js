@@ -25,7 +25,7 @@ const CompanyList = () => {
         <div className="CompanyList-list">
           {companies.map((company) => (
             <CompanyCard
-              key={company.id}
+              key={company.handle}
               handle={company.handle}
               name={company.name}
               description={company.description}
