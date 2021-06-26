@@ -5,27 +5,26 @@ nav {
     text-align: right;
   }
   
-  .nav-item {
+  /* .nav-item {
     width: 200px;
     text-align: center;
     
-  }
+  } */
   
-  nav a {
-    color: #f0f2f5;
-    text-decoration: none;
-    margin: 5px
-   
+ .navbar-brand {
+     color:  #f0f2f5;
+ }
+  .nav-link {
+      color: #f0f2f5;
   }
-  
-  nav a.active {
+
+  .nav-link.active {
     color: #f0f2f5;
     font-weight: bold;
-    border-bottom: 5px dotted;
-    box-sizing: border-box;
+    
   }
   
-  nav a.active:hover {
+  /* nav a.active:hover {
     color: #f0f2f5 !important;
   }
   
@@ -42,4 +41,4 @@ nav {
     font-weight: bold;
   }
   
-  
+   */

@@ -1,6 +1,8 @@
 import React from "react";
 import JobCard from "./JobCard";
 
+//This component renders the JobCard components.  This component is rendered in JobList and CompanyDetail components.  This is a dumb component.
+
 const JobCardList = ({ jobs }) => {
   return (
     <div className="JobCardList">

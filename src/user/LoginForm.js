@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+//LoginForm component, displays a login form.  Receives the login function form App component.
+
 const LoginForm = ({ login }) => {
   const INITIAL_STATE = {
     username: "",
@@ -21,6 +23,7 @@ const LoginForm = ({ login }) => {
     formErrors
   );
 
+  //function for handling change in form data.
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((formData) => ({
@@ -29,10 +32,12 @@ const LoginForm = ({ login }) => {
     }));
   };
 
+  //function for handling submit of form data.
   async function handleSubmit(e) {
     e.preventDefault();
     let result = await login(formData);
     if (result.success) {
+      //Pushes /companies route to history.
       history.push("/companies");
     } else {
       setFormErrors(result.errors);
@@ -54,7 +59,7 @@ const LoginForm = ({ login }) => {
         <label htmlFor="password">Password</label>
         <input
           id="password"
-          type="text"
+          type="password"
           name="password"
           value={formData.password}
           onChange={handleChange}

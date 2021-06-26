@@ -4,14 +4,18 @@ import JoblyApi from "../api/api";
 import LoadingSpinner from "../common/LoadingSpinner";
 import SearchForm from "../common/SearchForm";
 
+//List of company cards displayed on the /companies route.  Search function is passed to SearchForm which is rendered on the same page.
+
 const CompanyList = () => {
   const [companies, setCompanies] = useState(null);
 
+  //function which gets companies list when route is accessed.
   useEffect(function getCompaniesOnMount() {
     console.debug("CompanyList useEffect getCompaniesOnMount");
     search();
   }, []);
 
+  //search function allows for searching by company name
   async function search(name) {
     let companies = await JoblyApi.getCompanies(name);
     setCompanies(companies);

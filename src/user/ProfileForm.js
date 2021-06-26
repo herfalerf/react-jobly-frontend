@@ -2,6 +2,8 @@ import React, { useState, useContext } from "react";
 import JoblyApi from "../api/api";
 import UserContext from "../user/UserContext";
 
+//ProfileForm displays the profile of the user and allows the user to change certain information on password submit.  Does not allow user to change userName
+
 const ProfileForm = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
   const [formData, setFormData] = useState({
@@ -26,6 +28,7 @@ const ProfileForm = () => {
     saveConfirmed
   );
 
+  //handle form data change.
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((formData) => ({
@@ -35,6 +38,7 @@ const ProfileForm = () => {
     setFormErrors([]);
   };
 
+  //handle form data submit
   async function handleSubmit(evt) {
     evt.preventDefault();
 

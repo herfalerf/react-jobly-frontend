@@ -10,6 +10,8 @@ import CompanyDetail from "../companies/CompanyDetail";
 import JobList from "../jobs/JobList";
 import Home from "../Home";
 
+//Routes component.  Obtains login and signup functions as props from app and passes them to LoginForm and SignupForm components.  Uses private route custom route component for private routes, and the NotFound component for bad routes.
+
 function Routes({ login, signup }) {
   console.debug(
     "Routes",

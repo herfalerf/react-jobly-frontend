@@ -4,17 +4,20 @@ import JoblyApi from "../api/api";
 import JobCardList from "../jobs/JobCardList";
 import LoadingSpinner from "../common/LoadingSpinner";
 
+//CompanyDetail - gives details about a company, including open jobs.  Uses the JobCardList.  Accessed through the companies/:handle route
+
 const CompanyDetail = () => {
   const { handle } = useParams();
   console.debug("CompanyDetail", "handle=", handle);
 
   const [company, setCompany] = useState(null);
 
+  //function for API call for specific company.
   useEffect(
     function getCompanyAndJobsForUser() {
       async function getCompany() {
         let res = await JoblyApi.getCompany(handle);
-        // console.log(res);
+
         setCompany(res);
       }
       getCompany();

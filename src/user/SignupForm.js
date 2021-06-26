@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 
+//Signup form.  This form receives the signup function from App and creates a new user.
+
 const SignupForm = ({ signup }) => {
   const INITIAL_STATE = {
     username: "",
@@ -24,6 +26,7 @@ const SignupForm = ({ signup }) => {
     formErrors
   );
 
+  //handle form data change.
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((formData) => ({
@@ -32,6 +35,7 @@ const SignupForm = ({ signup }) => {
     }));
   };
 
+  //handle form data submit
   async function handleSubmit(e) {
     e.preventDefault();
     let result = await signup(formData);

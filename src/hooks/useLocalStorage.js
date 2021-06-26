@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+//Custom hook to allow for saving and object in local storage
+
 function useLocalStorage(key, firstvalue = null) {
   const initialValue = localStorage.getItem(key) || firstvalue;
 

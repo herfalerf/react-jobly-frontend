@@ -2,6 +2,8 @@ import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import UserContext from "./user/UserContext";
 
+//Home component, displays a welcome message if user is logged in, displays links to login/signup form if no current user.
+
 const Home = () => {
   const { currentUser } = useContext(UserContext);
   console.debug("Homepage", "currentUser=", currentUser);
