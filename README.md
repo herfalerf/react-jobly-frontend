@@ -1,3 +1,8 @@
+View the deployed build here: [React Jobly](https://giddy-sock.surge.sh/)
+
+View the backend repo here: [React Jobly Backend](https://github.com/herfalerf/react-jobly-backend)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
