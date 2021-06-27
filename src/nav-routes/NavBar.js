@@ -14,7 +14,7 @@ function NavBar({ logout }) {
   //render for navbar when user is logged in.
   function loggedInNav() {
     return (
-      <Navbar expand="md">
+      <Navbar className="NavBar" expand="md">
         <NavLink exact to="/" className="navbar-brand">
           Jobly
         </NavLink>
@@ -39,7 +39,7 @@ function NavBar({ logout }) {
   //render for navbar when user is logged out.
   function loggedOutNav() {
     return (
-      <Navbar expand="md">
+      <Navbar className="NavBar" expand="md">
         <NavLink exact to="/" className="navbar-brand">
           Jobly
         </NavLink>

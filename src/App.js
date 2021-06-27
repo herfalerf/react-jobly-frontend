@@ -7,6 +7,7 @@ import LoadingSpinner from "./common/LoadingSpinner";
 import JoblyApi from "./api/api";
 import UserContext from "./user/UserContext";
 import jwt from "jsonwebtoken";
+import "./App.css";
 
 //Key for token to be stored in local storage.
 export const TOKEN_STORAGE_ID = "jobly-token";

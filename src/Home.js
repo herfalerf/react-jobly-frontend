@@ -8,21 +8,25 @@ const Home = () => {
   const { currentUser } = useContext(UserContext);
   console.debug("Homepage", "currentUser=", currentUser);
   return (
-    <div>
-      <h1>Jobly</h1>
-      <p>All the jobs in one convenient place.</p>
-      {currentUser ? (
-        <h3>Welcome Back, {currentUser.firstName || currentUser.username}!</h3>
-      ) : (
-        <p>
-          <Link className="btn btn-primary font-weight-bold-mr-3" to="/login">
-            Log in
-          </Link>
-          <Link className="btn btn-primary font-weight-bold-mr-3" to="/signup">
-            Sign up
-          </Link>
-        </p>
-      )}
+    <div className="Home">
+      <div className="container text-center">
+        <h1 className="mb-4">Jobly</h1>
+        <p className="lead">All the jobs in one convenient place.</p>
+        {currentUser ? (
+          <h3>
+            Welcome Back, {currentUser.firstName || currentUser.username}!
+          </h3>
+        ) : (
+          <p>
+            <Link className="btn btn-primary font-weight-bold m-2" to="/login">
+              Log in
+            </Link>
+            <Link className="btn btn-primary font-weight-bold m-2" to="/signup">
+              Sign up
+            </Link>
+          </p>
+        )}
+      </div>
     </div>
   );
 };
